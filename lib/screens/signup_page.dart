@@ -10,6 +10,8 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  bool _isPasswordVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +71,19 @@ class _SignupPageState extends State<SignupPage> {
               const Text("Password"),
               const SizedBox(height: 10),
               TextFormField(
-                decoration: const InputDecoration(
+                obscureText: !_isPasswordVisible,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isPasswordVisible=!_isPasswordVisible;
+                      });
+                    },
+
+                    icon: Icon(_isPasswordVisible
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                  ),
                   border: OutlineInputBorder(),
                   hintText: "Enter Password",
                 ),
