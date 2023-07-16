@@ -13,7 +13,9 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Signup Screen'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
@@ -90,7 +92,6 @@ class _SignupPageState extends State<SignupPage> {
                 onPressed: () {
                   // Navigator.of(context).push(MaterialPageRoute(
                   //     builder: (context) => const LoginPage()));
-                  print("sign up");
                 },
                 style: TextButton.styleFrom(),
                 child: const Center(
