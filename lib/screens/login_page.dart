@@ -1,10 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:test_flutter/screens/checkoutScreen.dart';
 import 'package:test_flutter/screens/signup_page.dart';
-import 'package:test_flutter/utils/routes.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
+  final bool _isPasswordVisiable = false;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,12 @@ class LoginPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, MyRoutes.homeRoute);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CheckoutScreen(),
+                  ),
+                );
               },
               style: TextButton.styleFrom(),
               child: const Center(

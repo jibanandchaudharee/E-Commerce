@@ -11,6 +11,7 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   bool _isPasswordVisible = false;
+  bool _isComformPasswordVisiable = false;
 
   @override
   Widget build(BuildContext context) {
@@ -75,16 +76,17 @@ class _SignupPageState extends State<SignupPage> {
                 decoration: InputDecoration(
                   suffixIcon: IconButton(
                     onPressed: () {
-                      setState(() {
-                        _isPasswordVisible=!_isPasswordVisible;
-                      });
+                      setState(
+                        () {
+                          _isPasswordVisible = !_isPasswordVisible;
+                        },
+                      );
                     },
-
                     icon: Icon(_isPasswordVisible
                         ? Icons.visibility
                         : Icons.visibility_off),
                   ),
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   hintText: "Enter Password",
                 ),
               ),
@@ -94,8 +96,19 @@ class _SignupPageState extends State<SignupPage> {
               const Text("Comform Password"),
               const SizedBox(height: 10),
               TextFormField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
+                obscureText: !_isComformPasswordVisiable,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isComformPasswordVisiable = _isComformPasswordVisiable;
+                      });
+                    },
+                    icon: Icon(_isComformPasswordVisiable
+                        ? Icons.visibility
+                        : Icons.visibility_off),
+                  ),
+                  border: const OutlineInputBorder(),
                   hintText: "Enter Comform Password",
                 ),
               ),
@@ -135,7 +148,7 @@ class _SignupPageState extends State<SignupPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const LoginPage()),
+                                  builder: (context) => LoginPage()),
                             );
                           },
                       ),
